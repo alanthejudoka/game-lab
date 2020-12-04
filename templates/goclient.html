@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'goclient.css') }}">
+    <title>Capitalizer Web Client</title>
+  </head>
+  <body>
+    <h1>GO!</h1>
+<p id="info">Click the Join Game button when ready</p>
+<section id="board"></section>
+<footer>
+  <button id="join">Join Game at Server:</button>
+  <input id="serverIp">
+  <button id="leave">Leave Game</button>
+</footer>
+    <script src="{{ 'goclient.js' }}"></script>
+  </body>
+</html>
+
+
+<!-- /* html canvas with clicks */
+/* or invisible grid */ -->

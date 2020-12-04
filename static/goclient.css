@@ -1,0 +1,31 @@
+section {
+  display: grid;
+  grid-template-rows: repeat(18, 1fr);
+  grid-template-columns: repeat(18, 1fr);
+  grid-gap: 5px;
+  border-top: 5px solid;
+  border-bottom: 5px solid;
+  border-left: 5px solid;
+  border-right: 5px solid;
+  height: 1000px;
+  width: 1000px;
+  background-color: black;
+}
+
+section div {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+  color: blue;
+  font: bold 60px Arial;
+}
+
+#leave {
+  display: none;
+}
+
+footer {
+  margin-top: 20px;
+}
