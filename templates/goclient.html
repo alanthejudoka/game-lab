@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'goclient.css') }}">
-    <title>Capitalizer Web Client</title>
+      <meta charset="utf-8">
+      <title>Capitalizer Web Client</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename= 'goclient.css') }}">
+      <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+      <script src="/static/js/goclient.js"></script>
   </head>
   <body>
     <h1>GO!</h1>
@@ -14,7 +17,7 @@
   <input id="serverIp">
   <button id="leave">Leave Game</button>
 </footer>
-    <script src="{{ 'goclient.js' }}"></script>
+
   </body>
 </html>
 
