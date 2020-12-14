@@ -1,49 +1,70 @@
-from flask import Flask, render_template, session, copy_current_request_context
-from flask_socketio import SocketIO, emit, disconnect
-from threading import Lock
+from flask import Flask, render_template, render_template, request
+from flask_socketio import SocketIO, send, emit, join_room, rooms
+from coolname import generate_slug
 
-
-async_mode = None
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socket_ = SocketIO(app, async_mode=async_mode)
-thread = None
-thread_lock = Lock()
+socketio = SocketIO(app)
 
-ACTIVE_CLIENTS = 0
 
 @app.route('/')
-def index():
-    return render_template('goclient.html', async_mode=socket_.async_mode)
+def hello_world():
+    return render_template("index.html")
 
 
-@socket_.on('connect')
-def on_connect():
-    global ACTIVE_CLIENTS
-    ACTIVE_CLIENTS += 1
-
-@socket_.on('disconnect')
-def on_disconnect():
-    global ACTIVE_CLIENTS
-    ACTIVE_CLIENTS -= 1
+@app.route('/seek/<room_id>')
+def seek(room_id):
+    return render_template("seek.html")
 
 
-@socket_.on('my_event', namespace='/test')
-def test_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my_response',
-         {'data': message['data'], 'count': session['receive_count']})
+@app.route('/hide/<room_id>')
+def hide(room_id):
+    return render_template("hide.html")
 
 
-@socket_.on('my_broadcast_event', namespace='/test')
-def test_broadcast_message(message):
-    session['receive_count'] = session.get('receive_count', 0) + 1
-    emit('my_response',
-         {'data': message['data'], 'count': session['receive_count']},
-         broadcast=True)
+@socketio.on('message', namespace="/hide")
+def join_room_flask_hide(msg):
+    join_room(msg)
+    send("yellow player has joined the game.", room=msg, namespace="/seek")
 
 
+@socketio.on('message', namespace="/seek")
+def join_room_flask_seek(msg):
+    join_room(msg)
+
+
+@socketio.on('ss', namespace="/seek")
+def ss(msg):
+
+    emit("rh", msg[0], namespace="/hide", room=msg[1])
+
+
+@socketio.on('sttsr', namespace="/seek")
+def sttsr(msg):
+
+    emit("sttcb", msg[0], namespace="/hide", room=msg[1])
+
+
+@socketio.on('sttsb', namespace="/hide")
+def sttsb(msg):
+
+    emit("sttcr", msg[0], namespace="/seek", room=msg[1])
+
+
+@socketio.on('sh', namespace="/hide")
+def from_yellow_client(msg):
+    emit("rs", msg[0], namespace="/seek", room=msg[1])
+
+
+#Generate slugs for game
+
+
+@app.route('/slug', methods=["GET"])
+def slug():
+    if request.method == "GET":
+
+        return {"game_id": generate_slug(2)}
 
 
 if __name__ == '__main__':
-    socket_.run(app, debug=True)
+    socketio.run(app, debug=True)
