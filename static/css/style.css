@@ -1,8 +1,8 @@
 #board button {
   width: 75px;
   height: 75px;
-  background-color: greenyellow;
-  border-color: brown;
+  background-color: white;
+  border-color: blue;
   border-width: 1px;
   border-style: solid;
   /* padding: 1%; */
