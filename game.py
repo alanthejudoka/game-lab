@@ -44,7 +44,8 @@ def print_board(board):
         print('|' + '|'.join(row) + '|')
 
 def drop_piece(board, column, piece):
-    ''' Attempts to drop specified piece into the board at the
+    '''
+    Attempts to drop specified piece into the board at the
     specified column. If this succeeds, return True, otherwise return False.
     '''
 
