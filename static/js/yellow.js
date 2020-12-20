@@ -33,8 +33,8 @@ function set_message_player(){
         else if((turn=="red"||turn==null||new_turn=="red")){
             message_player="It's player red's turn"
         }
-        document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
-        document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
+        // document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
+        // document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
 
     if ((document.querySelectorAll('button[style="background-color: rgb(255, 0, 0);"]').length)+(document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length)==49){
         if (document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length>document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length){

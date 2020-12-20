@@ -40,9 +40,9 @@ function set_message_player(){
     else if(turn=="yellow"){
             message_player="It's player yellow's turn"
         }
-    // probably don't need this if there is a definite winner in the end
-    document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
-    document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
+    // // probably don't need this if there is a definite winner in the end
+    // document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
+    // document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
 
     // this is the message they receive when someone wins i think
     if ((document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length)+(document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length)==49){
