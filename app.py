@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 from flask_socketio import SocketIO, send, emit, join_room, rooms
-from coolname import generate_slug
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -84,14 +83,6 @@ def from_yellow_client(msg):
 
 
 #Generate slugs for game
-
-
-@app.route('/slug', methods=["GET"])
-def slug():
-    if request.method == "GET":
-
-        return {"game_id": generate_slug(2)}
-
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, testing=True)
