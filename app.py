@@ -5,7 +5,6 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from waitress import serve
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -86,4 +85,3 @@ def from_yellow_client(msg):
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, testing=True)
-    serve(app)
