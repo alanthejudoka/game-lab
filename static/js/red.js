@@ -11,31 +11,47 @@ squares.forEach(square=>{
 })
 
 socket.on("rs",(msg)=>{
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
     for (let element in msg){
         document.getElementById(msg[element]).style.backgroundColor="#FFFF00"
 
         unused_tiles.push(document.getElementById(msg[element]))
     }
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
 })
 
 function seekserver(data){
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
     socket.emit("ss",data)
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
 }
 
 function send_turn_to_server(msg){
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
     socket.emit("sttsr",msg)
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
 }
 
 socket.on("sttcr", (msg)=>{new_turn = msg
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
     set_message_player()
-    win()
+    if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
 })
 
 let message_player = null
