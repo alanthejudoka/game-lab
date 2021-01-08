@@ -78,6 +78,7 @@ nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.styl
                 (this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
 nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000'))
                 ){
+                alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
                 return true
             }
         }catch (err){}
