@@ -86,14 +86,15 @@ function set_message_player(){
         }
 
     else if(turn=="yellow"){
+          if (win(this.id)){
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
             message_player="It's player yellow's turn"
         }
 
     // this is the message they receive when someone wins i think
     if (win(this.id)){
-        message_player = "AY FAM YOU WON MATE POGGERS POGPOGPOG"
         alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
-        return
     }
     document.getElementById("turn").innerText = message_player
 }
@@ -113,6 +114,9 @@ function relevantsquare(){
     // if it is the host's turn and the tile is empty
 
     if ((unused_tiles.includes(this)==false)&&(turn=="red"))  {
+          if (win(this.id)){
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
         try {
             if ((this.id >= 36) || unused_tiles.includes(this.nextElementSibling.nextElementSibling.nextElementSibling.
                 nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling) == true){
@@ -129,6 +133,9 @@ function relevantsquare(){
                 turn="yellow"
                 set_message_player()
             }
+              if (win(this.id)){
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
             else{
                 alert("You can't do that, try again")
             }
