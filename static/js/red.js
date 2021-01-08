@@ -152,14 +152,21 @@ function relevantsquare(){
                 let filtered_res = res.filter(el=>{return el!= null})
                 let id = filtered_res.map(n=>{return n.id})
                 seekserver([id,window.location.pathname.split("/")[2]])
-                send_turn_to_server(["yellow",window.location.pathname.split("/")[2]])
-                new_turn=null
-                turn="yellow"
-                set_message_player()
-            }
-              if (win(this.id)){
+                   if (win(this.id)){
         alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
     }
+                send_turn_to_server(["yellow",window.location.pathname.split("/")[2]])
+                   if (win(this.id)){
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
+                new_turn=null
+                turn="yellow"
+                   if (win(this.id)){
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
+                set_message_player()
+            }
+
             else{
                 alert("You can't do that, try again")
             }
