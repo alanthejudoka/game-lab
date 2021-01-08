@@ -1,10 +1,10 @@
-    let turn = null
-    let new_turn = null
-    const unused_tiles = []
-    let socket = io.connect(window.origin +"/seek")
-    socket.on("connect",()=>{socket.send(window.location.pathname.split("/")[2])})
-    socket.on("message",(msg)=>{document.getElementById("player-status").innerText=msg})
-    const squares = document.querySelectorAll("#board button")
+let turn = null
+let new_turn = null
+const unused_tiles = []
+let socket = io.connect(window.origin +"/seek")
+socket.on("connect",()=>{socket.send(window.location.pathname.split("/")[2])})
+socket.on("message",(msg)=>{document.getElementById("player-status").innerText=msg})
+const squares = document.querySelectorAll("#board button")
 
 squares.forEach(square=>{
     square.addEventListener("click",relevantsquare)
@@ -32,6 +32,54 @@ socket.on("sttcr", (msg)=>{new_turn = msg
 
 let message_player = null
 
+function win(id){
+    if (id === 16){
+        //.right three times;.down three times;.rightdown three times
+        try{
+            if (
+                //three right down
+                ((this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000')&&
+                (this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000')&&
+                (this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000'))
+                ){
+                return true
+            }
+        }catch (err){}
+
+    }
+    /*
+       identifier: (((id-1)%7)+1) === [rownum] && (id-1)/7 === [colnum]
+       one left: this.previousElementSibling
+
+       one right: this.nextElementSibling
+
+       one up : this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling.previousElementSibling
+
+       one down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling.nextElementSibling
+
+       left up: this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+
+       right up: this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling
+
+       left down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling
+
+       right down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling.nextElementSibling.nextElementSibling
+
+     */
+}
+
 function set_message_player(){
     if ((turn =="red"||turn==null||new_turn=="red")){
         message_player = "It's your turn"
@@ -40,22 +88,11 @@ function set_message_player(){
     else if(turn=="yellow"){
             message_player="It's player yellow's turn"
         }
-    // // probably don't need this if there is a definite winner in the end
-    // document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
-    // document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
 
     // this is the message they receive when someone wins i think
-    if ((document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length)+(document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length)==49){
-        if (document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length>document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length){
-            message_player = "yellow player won, you lost!"
-        }
-
-        else if (document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length==document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length){
-            message_player = "It's a tie!"
-        }
-        else{
-            message_player = "You Won!"
-        }
+    if (win(this.id)){
+        message_player = "AY FAM YOU WON MATE POGGERS POGPOGPOG"
+        return
     }
     document.getElementById("turn").innerText = message_player
 }
@@ -73,6 +110,7 @@ function relevantsquare(){
       turn = turn
   }
     // if it is the host's turn and the tile is empty
+
     if ((unused_tiles.includes(this)==false)&&(turn=="red"))  {
         try {
             if ((this.id >= 36) || unused_tiles.includes(this.nextElementSibling.nextElementSibling.nextElementSibling.
