@@ -92,6 +92,7 @@ function set_message_player(){
     // this is the message they receive when someone wins i think
     if (win(this.id)){
         message_player = "AY FAM YOU WON MATE POGGERS POGPOGPOG"
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
         return
     }
     document.getElementById("turn").innerText = message_player
