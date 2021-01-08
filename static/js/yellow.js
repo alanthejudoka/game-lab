@@ -26,6 +26,54 @@ squares.forEach(square=>{
     square.addEventListener("click",relevantsquare)
 })
 let message_player = null
+function win(id){
+    if (id !== 16){
+        //.right three times;.down three times;.rightdown three times
+        try{
+            if (
+                //three right down
+                ((this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000')&&
+                (this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000')&&
+                (this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+nextElementSibling.nextElementSibling.nextElementSibling.style.backgroundColor==='#ff0000')&&
+                (this.id.style.backgroundColor === '#ff0000'))
+                ){
+                return true
+            }
+        }catch (err){}
+
+    }
+    /*
+       identifier: (((id-1)%7)+1) === [rownum] && (id-1)/7 === [colnum]
+       one left: this.previousElementSibling
+
+       one right: this.nextElementSibling
+
+       one up : this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling.previousElementSibling
+
+       one down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling.nextElementSibling
+
+       left up: this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling
+
+       right up: this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.
+       previousElementSibling.previousElementSibling
+
+       left down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling
+
+       right down: this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.
+       nextElementSibling.nextElementSibling.nextElementSibling
+
+     */
+}
 function set_message_player(){
     if ((turn=="yellow")){
         message_player = "It's your turn"
@@ -33,19 +81,8 @@ function set_message_player(){
         else if((turn=="red"||turn==null||new_turn=="red")){
             message_player="It's player red's turn"
         }
-        // document.getElementById("red-score").innerText = "Red: " + document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length
-        // document.getElementById("yellow-score").innerText = "yellow: " + document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length
-
-    if ((document.querySelectorAll('button[style="background-color: rgb(255, 0, 0);"]').length)+(document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length)==49){
-        if (document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length>document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length){
-            message_player = "You Won!"
-        }
-        else if (document.querySelectorAll('button[style="background-color: rgb(255, 255, 0);"]').length==document.querySelectorAll('button[style="background-color: rgb(192, 57, 43);"]').length){
-            message_player = "It's a tie!"
-        }
-        else{
-            message_player = "Red player won, you lost!"
-        }
+    if (win(this.id)){
+        message_player = "You Lost! lol sucks to be you!!!!!! HAHAHHAHA LOSER LLLLLLLL"
     }
     document.getElementById("turn").innerText = message_player
 }
