@@ -7,7 +7,13 @@ socket.on("message",(msg)=>{document.getElementById("player-status").innerText=m
 const squares = document.querySelectorAll("#board button")
 
 squares.forEach(square=>{
+        if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
     square.addEventListener("click",relevantsquare)
+        if (win(this.id)) {
+        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
+    }
 })
 
 socket.on("rs",(msg)=>{
