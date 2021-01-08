@@ -11,23 +11,31 @@ squares.forEach(square=>{
 })
 
 socket.on("rs",(msg)=>{
+    win()
     for (let element in msg){
         document.getElementById(msg[element]).style.backgroundColor="#FFFF00"
 
         unused_tiles.push(document.getElementById(msg[element]))
     }
+    win()
 })
 
 function seekserver(data){
+    win()
     socket.emit("ss",data)
+    win()
 }
 
 function send_turn_to_server(msg){
+    win()
     socket.emit("sttsr",msg)
+    win()
 }
 
 socket.on("sttcr", (msg)=>{new_turn = msg
+    win()
     set_message_player()
+    win()
 })
 
 let message_player = null
@@ -86,9 +94,6 @@ function set_message_player(){
         }
 
     else if(turn=="yellow"){
-          if (win(this.id)){
-        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
-    }
             message_player="It's player yellow's turn"
         }
 
@@ -114,9 +119,6 @@ function relevantsquare(){
     // if it is the host's turn and the tile is empty
 
     if ((unused_tiles.includes(this)==false)&&(turn=="red"))  {
-          if (win(this.id)){
-        alert("AY FAM YOU WON MATE POGGERS POGPOGPOG")
-    }
         try {
             if ((this.id >= 36) || unused_tiles.includes(this.nextElementSibling.nextElementSibling.nextElementSibling.
                 nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling) == true){
